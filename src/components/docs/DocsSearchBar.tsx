@@ -125,6 +125,13 @@ export default function DocsSearchBar() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={handleKeyDown}
+                        role="combobox"
+                        aria-expanded={isOpen && results.length > 0}
+                        aria-haspopup="listbox"
+                        aria-controls="docs-search-results"
+                        aria-label="Documentation search"
+                        aria-autocomplete="list"
+                        aria-activedescendant={activeIndex >= 0 ? `result-item-${results[activeIndex]?.item.id}` : undefined}
                         className="bg-transparent flex-1 outline-none text-content-primary placeholder:text-content-secondary w-full"
                     />
                     {query ? (
@@ -148,11 +155,18 @@ export default function DocsSearchBar() {
             </div>
 
             {isOpen && results.length > 0 && (
-                <div className="absolute top-full mt-3 w-full rounded-2xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200 bg-bg-elevated/95 border border-theme-border/40 shadow-neu-raised backdrop-blur-xl">
+                <div 
+                    id="docs-search-results"
+                    role="listbox"
+                    className="absolute top-full mt-3 w-full rounded-2xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200 bg-bg-elevated/95 border border-theme-border/40 shadow-neu-raised backdrop-blur-xl"
+                >
                     <div className="max-h-[450px] overflow-y-auto">
                         {results.map((result, idx) => (
                             <div
+                                id={`result-item-${result.item.id}`}
                                 key={result.item.id}
+                                role="option"
+                                aria-selected={activeIndex === idx}
                                 onMouseEnter={() => setActiveIndex(idx)}
                                 onClick={() => {
                                     router.push(result.item.link);
@@ -204,6 +218,12 @@ export default function DocsSearchBar() {
                     <p className="text-sm mt-1 text-content-secondary/80">Try a different search term</p>
                 </div>
             )}
+
+            {/* Screen reader live region for announcing search results */}
+            <div className="sr-only" aria-live="polite" aria-atomic="true">
+                {isOpen && results.length > 0 ? `${results.length} results found` : ""}
+                {isOpen && query.length > 1 && results.length === 0 ? "No results found" : ""}
+            </div>
         </div>
     );
 }
