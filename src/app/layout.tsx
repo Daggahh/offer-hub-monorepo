@@ -20,6 +20,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0e9898" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
+  ],
+};
+
 export const metadata: Metadata = {
   title: {
     default: "OFFER-HUB | The Future of On-Chain Bounties",
@@ -57,12 +64,6 @@ export const metadata: Metadata = {
 
   // ── PWA manifest ──────────────────────────────────────────────────────────
   manifest: "/site.webmanifest",
-
-  // ── Theme colour (browser chrome on Android / Safari pinned tab) ──────────
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0e9898" },
-    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
-  ],
 
   // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
