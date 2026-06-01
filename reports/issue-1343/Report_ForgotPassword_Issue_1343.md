@@ -24,7 +24,7 @@ To verify that the "Forgot Password" form handles user input correctly, securely
 ## 3. Evidence & Screenshots
 
 ### Developer Tools Network Log (403 Forbidden)
-![DevTools 403 Error Log](images/devtools_403.png)
+![DevTools 403 Error Log](https://github.com/user-attachments/assets/e9aef61d-6ed1-45d5-ae39-02deab5c07f9)
 
 ## 4. Technical Analysis & Potential Cause
 The **403 Forbidden** error on a public password-reset request endpoint typically points to one of three backend architectural issues:

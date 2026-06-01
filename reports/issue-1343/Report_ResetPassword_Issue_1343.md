@@ -15,10 +15,10 @@ To verify that the recovery link received via email safely opens the password re
 ## 3. Evidence & Screenshots
 
 ### Blocked State Verification (Re-verification of DevTools 403 API block)
-![DevTools 403 Error Log](images/devtools_403.png)
+![DevTools 403 Error Log](https://github.com/user-attachments/assets/e9aef61d-6ed1-45d5-ae39-02deab5c07f9)
 
 ### Active Registered Session (Proving account generation prior to test)
-![Active Registered Session Dashboard](images/profile.png)
+![Active Registered Session Dashboard](https://github.com/user-attachments/assets/ec78489b-fdbc-4cf1-903d-7bea8fdf3f0b)
 
 ## 4. Next Steps for Resolution
 1. **Fix Account Deletion Logic:** Update the user settings backend routing to allow Google/OAuth-authenticated accounts to delete their profile without hitting a password confirmation validator schema block.
